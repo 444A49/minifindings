@@ -12,7 +12,7 @@ All my research is done on my own drone, which is in firmware .200. I don't know
 
 Most of the hacks and tweaks will be done with Original Gangsters' [dji-firmware-tools](https://github.com/o-gs/dji-firmware-tools/). Make sure you have python3 installed in your system. I'm using Ubuntu and all the commands will assume you are in a \*nix system.
 
-I strongly recommend you joining the [dji-rev slack group](dji-rev.slack.com/). You can find an invitation link [in their wiki](https://dji.retroroms.info/). They are usually highly secretive of their findings but sometimes they drop firmware dumps and useful information.
+I strongly recommend you joining the [dji-rev slack group](https://dji-rev.slack.com/). You can find an invitation link [in their wiki](https://dji.retroroms.info/). They are usually highly secretive of their findings but sometimes they drop firmware dumps and useful information.
 
 ## Glossary
 

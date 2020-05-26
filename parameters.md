@@ -6,6 +6,7 @@ There are 644 tweakable parameters in total.
 
 ---
 
+```
 multi_esc_type default = 0 range = < 0 .. 1 >
 F_CHL_F1 default = 16 range = < 0 .. 255 >
 F_CHL_F2 default = 19 range = < 0 .. 255 >
@@ -650,3 +651,4 @@ g_config.mode_sport_cfg.tilt_exp_mid_point default = 0.400000 range = < 0.100000
 g_config.mode_sport_cfg.tors_exp_mid_point default = 0.300000 range = < 0.100000 .. 0.900000 >
 g_config.mode_sport_cfg.lift_exp_mid_point default = 0.400000 range = < 0.100000 .. 0.900000 >
 zenmuse_cfg.type|g_config.zenmuse_cfg.type default = 0 range = < 0 .. 2 >
+```

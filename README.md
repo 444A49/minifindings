@@ -30,7 +30,18 @@ The mini runs on a modified version of Android.
 
 ### Serial mode
 
-The mini has a serial mode that has to be manually enabled on each boot. If you plug the mini to your computer and wait a few seconds, it will present itself to the pc as a mass storage drive. Serial mode can be enabled _before_ this mass storage mode is enabled. This can be easily done by opening the DJI Assisstant, pluging the drone and waiting a few seconds
+The mini has a serial mode that has to be manually enabled on each boot. If you plug the mini to your computer and wait a few seconds, it will present itself to the pc as a mass storage drive. Serial mode can be enabled _before_ this mass storage mode is enabled. This can be easily done by sending the GetVersion command with `comm_og_service_tool.py`.
+
+```./comm_serialtalk.py /dev/ttyACM0 --cmd_set=0 --cmd_id=1 --sender=1001 --receiver_type=31```
+
+ GetVersion is command 1 of set 0. Why the `sender` and `receiver_type` options are needed, I have no idea. I asked in the Slack channel and I was told that those parameters are required. So there's that.
+ 
+It might be wise to wrap this into a script that checks the availability of `/dev/ttyACM0` as you might run the command too early in the booting process, which will give you the `No such file or directory: '/dev/ttyACM0'` error. Or you can just run the command endelessly until you get a hexadecimal response.
+
+If you get permission errors, run the command as `sudo` or add your user to the `dialout` group.
+
+Once you get a response, the drone will remain in serial mode, will expose the FTP and accept parameters. It will refuse to teak off and the app will suggest you to restart the drone. Unplugging it does the trick as well.
+
 
 ### FTP
 

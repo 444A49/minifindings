@@ -57,7 +57,7 @@ Inspecting the way the `/tmp/blackbox` folder is initialized (there are a couple
 
 Besides what the fly app allows you to configure, the Mini exposes a couple of parameters that can only be tweaked on serial mode. You can get a list of these parameters with the `comm_og_service_tool.py` script. To get the full list, simply run `./comm_og_service_tool.py  /dev/ttyACM0 WM160 FlycParam list --count 1500`. The Mini exposes one table with around 650 parameters (parameters are exposed in tables with sets of parameters, the Mini happens to have only one), although you'll see that `comm_og_service_tool.py` throws a couple of errors while reading the parameters. It seems that the Mini reports around 1500 parameters, but only lets you access a third of that.
 
-This are the parameters I've changed in mine, which simply makes it faster when going up and down in sport mode.
+These are the parameters I've changed in mine, which simply makes it faster when going up and down in sport mode.
 
 `vert_vel_down_adding_max_0 -7` # Maximum general downward speed
 
@@ -74,6 +74,8 @@ To set a param, issue the following command:
 Parameters have a min and max value and going outside those values has no effect.
 
 ### FCC hack
+
+The Mini, like most DJI drones, have two configurations that are activated based on location: FCC and CE. You want to use always the FCC mode, which is only available in USA. This allows you to use the full power throughput of the RC and AC.
 
 There are plenty of tutorials about this on Youtube. It basically boils down to trick the Fly App into thinking it's in an FCC area, connecting to the drone while shielding it so it cannot acquire GPS lock, and then taking off. 
 

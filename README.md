@@ -89,11 +89,25 @@ The RC has an extremely annoying speaker that will beep at you for a varaiety of
 
 ### Shell access
 
-You can easily shell the RC by plugging a USB to Ethernet adapter. Plug the ethernet cable to your pc and `telnet` to 192.168.3.10. It gives you root access.
+You can easily shell the RC by plugging a USB to Ethernet adapter. Plug the ethernet cable to your PC, set `192.168.3.2` as your PC IP address, and `telnet` to 192.168.3.10. It gives you root access.
 
 ### Firmware
 
 RC's firmware is completely unencrypted. You can download it from the [Dank Drone Downloader](http://dankdronedownloader.co.uk/DDD2/app/) website and extract the files with [binwalk](https://github.com/ReFirmLabs/binwalk). 
+
+### Dumping
+
+You can easily dump all the files by creating a `tar` file and sending it over the network with `nc`. First, on your PC, put `nc` in listening mode, dumping what it receives to a file:
+
+`nc -l -p 1234 > rc.tar`
+
+This will open port `1234` in your PC and create a file named `rc.tar` that you can uncompress later. Then, in the RC, run this command:
+
+`tar -cv --exclude="sys" --exclude="proc" / | nc 192.168.3.2 1234`
+
+This will `tar` all the contents of the root filesystem, excluding `sys` and `proc` and pipe it over `nc`. Then you can uncompress the file in your PC.
+
+A better and more complete approach would be `cat`ing `/dev/mtd*`, which in theory will give you the full filesystem, but in practice the dumps that this create are incomplete; for example, they lack of the `tmp` folder.
 
 #### Files
 

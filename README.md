@@ -112,6 +112,10 @@ A better and more complete approach would be `cat`ing `/dev/mtd*`, which in theo
 #### Files
 
 * `/usr/bin/apsrv`:  (APplication SeRVice?) Seems to be in charge of the communication between phone and RC. If you run `strings` on it you'll see plenty of `CMDID_*` strings that could be potentially triggered with DUML packets. It also has interesting functions like `switch_mode_based_on_country` and `set_disable_country_flag`
+* `/etc/amt/wifi.conf`: This one is the one that changes when doing the FCC hack. In FCC mode, `country` holds the value `US`. It also holds other information about the RC connection itself:
+  * `rc_ssid`: For some reason, in my RC it's `Spark-RC-XXXXX`. Leftovers from Spark's firmware?
+  * `rc_passwd`: It's `12341234`
+  * `disable_country`: boolean, always set to 0, in CE or FCC mode. Related to the FCC hack?
 
 ## Fly app
 

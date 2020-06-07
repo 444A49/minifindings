@@ -57,7 +57,7 @@ Inspecting the way the `/tmp/blackbox` folder is initialized (there are a couple
 
 Besides what the fly app allows you to configure, the Mini exposes a couple of parameters that can only be tweaked on serial mode. You can get a list of these parameters with the `comm_og_service_tool.py` script. To get the full list, simply run `./comm_og_service_tool.py  /dev/ttyACM0 WM160 FlycParam list --count 1500`. The Mini exposes one table with around 650 parameters (parameters are exposed in tables with sets of parameters, the Mini happens to have only one), although you'll see that `comm_og_service_tool.py` throws a couple of errors while reading the parameters. It seems that the Mini reports around 1500 parameters, but only lets you access a third of that.
 
-These are the parameters I've changed in mine, which simply makes it faster when going up and down in sport mode.
+#### Downward speed on sport mode
 
 `vert_vel_down_adding_max_0 -7` # Maximum general downward speed
 
@@ -66,6 +66,10 @@ These are the parameters I've changed in mine, which simply makes it faster when
 `config.mode_sport_cfg.vert_vel_up_0 4` # Maximum upward speed
 
 You have to be very careful with these values because you can easily crash it when landing it, if you don't let the mini slow down first. The normal sport mode makes it descend really slow; switching the values to -7 won't prevent it from smashing the ground. If you think you can handle it, try `-10`. It can reach 40 km/h while going down. It's scary.
+
+#### Minimum hovering distance
+
+`min_height_user` # Sets the minimum hovering distance to a few centimeters. Hovering might be unstable on non-well lit areas. Must be issued with `--alt`. Credit to Bob Maker @ dji-rev.
 
 To set a param, issue the following command:
 

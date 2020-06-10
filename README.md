@@ -120,6 +120,7 @@ A better and more complete approach would be `cat`ing `/dev/mtd*`, which in theo
   * `rc_ssid`: For some reason, in my RC it's `Spark-RC-XXXXX`. Leftovers from Spark's firmware?
   * `rc_passwd`: It's `12341234`
   * `disable_country`: boolean, always set to 0, in CE or FCC mode. Related to the FCC hack?
+  * `sky_passwd`: Unlike `rc_passwd` this one is random and changes when you resync the RC with the AC (holding the power button for 4 seconds on the AC while on)
 
 ## Fly app
 

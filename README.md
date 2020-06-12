@@ -122,6 +122,10 @@ A better and more complete approach would be `cat`ing `/dev/mtd*`, which in theo
   * `disable_country`: boolean, always set to 0, in CE or FCC mode. Related to the FCC hack?
   * `sky_passwd`: Unlike `rc_passwd` this one is random and changes when you resync the RC with the AC (holding the power button for 4 seconds on the AC while on)
 
+### Silencing the RC
+
+Seems that the speaker is controlled by something running outside the linux environment exposed by the ethernet adapter. This can be easily verified by issuing `pkill '^'` on the RC's shell, which will kill all processes and triggering a restart of the OS. The speaker still beeps during the restart (if you press buttons), hinting that this is managed by another layer of the RC.
+
 ## Fly app
 
 ### Offline mode with maps

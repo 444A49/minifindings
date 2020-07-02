@@ -69,7 +69,7 @@ You have to be very careful with these values because you can easily crash it wh
 
 #### Minimum hovering distance
 
-`min_height_user` # Sets the minimum hovering distance to a few centimeters. Hovering might be unstable on non-well lit areas. Must be issued with `--alt`. Credit to Bob Maker @ dji-rev.
+`min_height_user 1` # Sets the minimum hovering distance to a few centimeters. Hovering might be unstable on non-well lit areas. Must be issued with `--alt`. Credit to Bob Maker @ dji-rev.
 
 To set a param, issue the following command:
 

@@ -57,6 +57,12 @@ Inspecting the way the `/tmp/blackbox` folder is initialized (there are a couple
 
 Besides what the fly app allows you to configure, the Mini exposes a couple of parameters that can only be tweaked on serial mode. You can get a list of these parameters with the `comm_og_service_tool.py` script. To get the full list, simply run `./comm_og_service_tool.py  /dev/ttyACM0 WM160 FlycParam list --count 1500`. The Mini exposes one table with around 650 parameters (parameters are exposed in tables with sets of parameters, the Mini happens to have only one), although you'll see that `comm_og_service_tool.py` throws a couple of errors while reading the parameters. It seems that the Mini reports around 1500 parameters, but only lets you access a third of that.
 
+To set a param, issue the following command:
+
+`./comm_og_service_tool.py /dev/ttyACM0 WM160 FlycParam set #parameter_name #new_value`
+
+Parameters have a min and max value and going outside those values has no effect.
+
 #### Downward speed on sport mode
 
 `vert_vel_down_adding_max_0 -7` # Maximum general downward speed
@@ -71,11 +77,13 @@ You have to be very careful with these values because you can easily crash it wh
 
 `min_height_user 1` # Sets the minimum hovering distance to a few centimeters. Hovering might be unstable on non-well lit areas. Must be issued with `--alt`. Credit to Bob Maker @ dji-rev.
 
-To set a param, issue the following command:
+#### Disable autolanding & controller beeping on low battery
 
-`./comm_og_service_tool.py /dev/ttyACM0 WM160 FlycParam set #parameter_name #new_value`
+`battery_type_0 0`
 
-Parameters have a min and max value and going outside those values has no effect.
+This will disable the forced autolanding on low battery and it will also disable the beeping on the controller. Be careful as you will have no visual/audio clues about your battery! Drone will not autoland and you'll be able to keep flying even if the battery is at 0%. I don't know what happens if you keep flying, I just hovered for around 10 seconds while at 0% and the drone seemed to be fine.
+
+AFAIK you should not do this as the Mini's batteries are not designed to be completely discharged.
 
 ### FCC hack
 

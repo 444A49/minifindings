@@ -91,6 +91,20 @@ The Mini, like most DJI drones, have two configurations that are activated based
 
 There are plenty of tutorials about this on Youtube. It basically boils down to trick the Fly App into thinking it's in an FCC area, connecting to the drone while shielding it so it cannot acquire GPS lock, and then taking off. 
 
+### Downgrading and upgrading
+
+You're free to upgrade and downgrade your drone as long as the antirollback system is not enabled. The antirollback is an interger value stored in the AC and on the firmware update files.
+
+#### Antirollback on firmware files
+
+Download your target firmware from the [Dank Drone Downloader](http://dankdronedownloader.co.uk/DDD2/app/) and `untar`/`binwalk` it. You should get 6 files out of it. One of those files will be 2kb. Check this file with any decent text editor and skip the first, binary section. After this you'll see an XML like structure where the `release` key has the antirollback parameter. This is an integer value and it's increased everytime DJI wants to prevent you from downgrading your AC.
+
+If the antirollback value of your _current_ firmware matches the one of your _target_ firmware, you're free to downgrade (or upgrade). If they don't, the AC will refuse the firmware.
+
+Up to version .500, the Mini's antirollback value remains on `1` meaning that you can install any firmware available.
+
+I highly recommend you to use third party flashing tools like [Drone Hacks](https://drone-hacks.com/download) or [No Limit Dronez](https://nolimitdronez.com/download) instead of DJI Assistant. By using these tools you won't be leaking information to DJI. Drone hacks has an offline mode, meaning you can boot the software, unplug your computer and flash the firmware completely disconnected from the Internet. 
+
 ## RC
 
 The RC accepts DUMLs if you connect it to a computer via a normal micro USB to USB cable. There's no serial mode to initialize and there's no timeout. It happily accepts packets even after minutes of being on.

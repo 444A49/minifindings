@@ -105,6 +105,14 @@ Up to version .500, the Mini's antirollback value remains on `1` meaning that yo
 
 I highly recommend you to use third party flashing tools like [Drone Hacks](https://drone-hacks.com/download) or [No Limit Dronez](https://nolimitdronez.com/download) instead of DJI Assistant. By using these tools you won't be leaking information to DJI. Drone hacks has an offline mode, meaning you can boot the software, unplug your computer and flash the firmware completely disconnected from the Internet. 
 
+#### Antirollback on AC
+
+Knowing your firmware version should be enough to know its antirollback version. (Meaning, check what version DJI Fly reports, download that version from DDD, compare antirollback value with your target version)
+
+Nonetheless there are certain cases where the firmware version on the AC is not reported back to DJI Fly, for example, on base firmware versions shipped on the first batch of Minis released back in November 2019.
+
+To extract the firmware signature (the XML file you saw on the 2kb file) you can use [PullUpgradeLogs](https://github.com/MAVProxyUser/DUMLrub/blob/master/PullUpgradeLogs.rb) of the [DUMLRub](https://github.com/MAVProxyUser/DUMLrub/) repo. // TODO: Add changes here for the `cmd_common_get_cfg_file` function.
+
 ## RC
 
 The RC accepts DUMLs if you connect it to a computer via a normal micro USB to USB cable. There's no serial mode to initialize and there's no timeout. It happily accepts packets even after minutes of being on.
